@@ -22,9 +22,6 @@ func main() {
 	languages["fr"] = "Bonjour"
 	languages["ch"] = "Ni Hao"
 
-	fmt.Printf(locale)
-	name, ok := languages[locale]
-	fmt.Println(name, " ", ok)
 	fmt.Println(languages[locale] + ", Go!")
 
 	/*
