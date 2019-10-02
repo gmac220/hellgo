@@ -6,12 +6,9 @@ import (
 )
 
 func main() {
-	//var locale, greeting string
 	var locale string
-	// var languages = [4]string{"en", "es", "de", "fr"}/
 	var available = []string{"English in en", "Spanish in es", "German in de", "French in fr", "Chinese in ch"}
 	languages := make(map[string]string)
-	// locale = languages[0]
 
 	fmt.Println("Select a language")
 
@@ -20,8 +17,6 @@ func main() {
 	}
 
 	fmt.Printf("What language do you want? EX. en for English: ")
-	// reader := bufio.NewReader(os.Stdin)
-	// locale, _ := reader.ReadString('\n')
 	fmt.Scanln(&locale)
 
 	if len(locale) != 2 {
