@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -16,8 +17,12 @@ func main() {
 		fmt.Println(available[i])
 	}
 
-	fmt.Printf("What language do you want? EX. en for English: ")
-	fmt.Scanln(&locale)
+	if len(os.Args) == 1 {
+		fmt.Printf("What language do you want?: ")
+		fmt.Scanln(&locale)
+	} else {
+		locale = os.Args[1]
+	}
 
 	if len(locale) != 2 {
 		fmt.Printf("Please input only two letters: ")
@@ -30,39 +35,11 @@ func main() {
 	languages["fr"] = "Bonjour"
 	languages["ch"] = "Ni Hao"
 
-	if locale == "" {
-		fmt.Println("Yo, Go!")
-	} else {
-		fmt.Println(languages[strings.ToLower(locale)] + ", Go!")
+	output := languages[strings.ToLower(locale)]
+
+	if output == "" {
+		output = "Yo"
 	}
 
-	/*
-		if locale == "en" {
-			greeting = "Hello"
-		} else if locale == "es" {
-			greeting = "Hola"
-		} else if locale == "de" {
-			greeting = "Guten Tag"
-		} else {
-			greeting = "Yo"
-		}
-	*/
-
-	/*
-		switch locale {
-		case "en":
-			greeting = "Hello"
-		case "es":
-			greeting = "Hola"
-		case "de":
-			greeting = "Guten Tag"
-		case "fr":
-			greeting = "Bonjour"
-		default:
-			greeting = "Yo"
-		}
-	*/
-
-	//fmt.Printf(greeting + ", Go!\n")
-
+	fmt.Println(output, ", Go!")
 }
