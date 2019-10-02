@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"strings"
+	// "strings"
 )
 
 var translations map[string]string
@@ -42,11 +42,12 @@ func main() {
 	translations["fr"] = "Bonjour"
 	translations["ch"] = "Ni Hao"
 
-	input := argswitch(os.Args)
-	locale := strings.ToLower(input)
+	// input := argswitch(os.Args)
+	// locale := strings.ToLower(input)
+	locale := argswitch(os.Args)
 
 	output := translate(locale)
-	
+
 	if output == "" {
 		output = "Yo"
 	}
