@@ -2,19 +2,32 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
 	//var locale, greeting string
 	var locale string
 	// var languages = [4]string{"en", "es", "de", "fr"}/
+	var available = []string{"English in en", "Spanish in es", "German in de", "French in fr", "Chinese in ch"}
 	languages := make(map[string]string)
 	// locale = languages[0]
 
-	fmt.Printf("What language do you want? (specify two letters in lowercase) EX. en for English: ")
+	fmt.Println("Select a language")
+
+	for i := 0; i < len(available); i++ {
+		fmt.Println(available[i])
+	}
+
+	fmt.Printf("What language do you want? EX. en for English: ")
 	// reader := bufio.NewReader(os.Stdin)
 	// locale, _ := reader.ReadString('\n')
 	fmt.Scanln(&locale)
+
+	if len(locale) != 2 {
+		fmt.Printf("Please input only two letters: ")
+		fmt.Scanln(&locale)
+	}
 
 	languages["en"] = "Hello"
 	languages["es"] = "Hola"
@@ -22,7 +35,7 @@ func main() {
 	languages["fr"] = "Bonjour"
 	languages["ch"] = "Ni Hao"
 
-	fmt.Println(languages[locale] + ", Go!")
+	fmt.Println(languages[strings.ToLower(locale)] + ", Go!")
 
 	/*
 		if locale == "en" {
