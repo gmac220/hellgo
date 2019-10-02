@@ -35,7 +35,11 @@ func main() {
 	languages["fr"] = "Bonjour"
 	languages["ch"] = "Ni Hao"
 
-	fmt.Println(languages[strings.ToLower(locale)] + ", Go!")
+	if locale == "" {
+		fmt.Println("Yo, Go!")
+	} else {
+		fmt.Println(languages[strings.ToLower(locale)] + ", Go!")
+	}
 
 	/*
 		if locale == "en" {
