@@ -3,13 +3,34 @@ package main
 import (
 	"fmt"
 	"os"
-	"strings"
 )
 
-func main() {
+func translate(input string) string {
+	translations := make(map[string]string)
+	translations["en"] = "Hello"
+	translations["es"] = "Hola"
+	translations["de"] = "Guten Tag"
+	translations["fr"] = "Bonjour"
+	translations["ch"] = "Ni Hao"
+
+	return translations[input]
+}
+
+func argswitch(input []string) string {
 	var locale string
+	if len(input) == 1 {
+		fmt.Printf("What language do you want?: ")
+		fmt.Scanln(&locale)
+	} else {
+		locale = os.Args[1]
+	}
+
+	return locale
+}
+
+func main() {
+	locale := argswitch(os.Args)
 	var available = []string{"English in en", "Spanish in es", "German in de", "French in fr", "Chinese in ch"}
-	languages := make(map[string]string)
 
 	fmt.Println("Select a language")
 
@@ -17,25 +38,12 @@ func main() {
 		fmt.Println(available[i])
 	}
 
-	if len(os.Args) == 1 {
-		fmt.Printf("What language do you want?: ")
-		fmt.Scanln(&locale)
-	} else {
-		locale = os.Args[1]
-	}
-
 	if len(locale) != 2 {
 		fmt.Printf("Please input only two letters: ")
 		fmt.Scanln(&locale)
 	}
 
-	languages["en"] = "Hello"
-	languages["es"] = "Hola"
-	languages["de"] = "Guten Tag"
-	languages["fr"] = "Bonjour"
-	languages["ch"] = "Ni Hao"
-
-	output := languages[strings.ToLower(locale)]
+	output := translate(locale)
 
 	if output == "" {
 		output = "Yo"
