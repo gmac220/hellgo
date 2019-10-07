@@ -1,5 +1,6 @@
 # hellgo
 Practice Hello Go app
+Hello
 
 # Running
 To run:
