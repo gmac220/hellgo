@@ -42,6 +42,12 @@ func main() {
 	translations["fr"] = "Bonjour"
 	translations["ch"] = "Ni Hao"
 
+	internal := func() {
+		fmt.Println(translations["en"])
+	}
+
+	internal()
+
 	// input := argswitch(os.Args)
 	// locale := strings.ToLower(input)
 	locale := argswitch(os.Args)
